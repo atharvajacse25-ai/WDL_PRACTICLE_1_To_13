@@ -68,6 +68,47 @@
             <p class="lead">A responsive student portal for enquiries, news, and campus updates.</p>
         </div>
     </header>
+    <section class="container mt-5" id="about">
+        <div class="row gy-4">
+            <div class="col-lg-7">
+                <div class="card feature-card shadow-sm p-4">
+                    <h3>About Practical 13</h3>
+                    <p>The portal demonstrates a modern Bootstrap layout with a responsive navigation bar, enquiry
+                        form,
+                        modal login, and information cards.</p>
+                    <ul>
+                        <li>Responsive layout using Bootstrap</li>
+                        <li>Contact form with success message</li>
+                        <li>Student-focused design for labs and events</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="card shadow-sm p-4">
+                    <h4 class="mb-3">Enquiry Form</h4>
+                    <form id="enquiryForm">
+                        <div class="mb-3">
+                            <label class="form-label"><i class="bi bi-person-fill me-1"></i>Full Name</label>
+                            <input type="text" class="form-control" placeholder="Atharva Jadhav" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label"><i class="bi bi-envelope-fill me-1"></i>Email address</label>
+                            <input type="email" class="form-control" placeholder="name@example.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label"><i class="bi bi-chat-left-dots-fill me-1"></i>Message</label>
+                            <textarea class="form-control" rows="3" placeholder="Your query"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Submit Details</button>
+                    </form>
+                    <div id="successMessage" class="alert alert-success d-none mt-3" role="alert">
+                        <h5 class="alert-heading">Request Submitted!</h5>
+                        <p>Thank you. We will contact you shortly with the details.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 
 </html>
