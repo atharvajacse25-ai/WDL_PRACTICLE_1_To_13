@@ -44,9 +44,11 @@
     <p id="storage-display"></p>
 
     <script>
-        // Drag and Drop
+        // this function lets us drag items
         function allowDrop(ev) { ev.preventDefault(); }
+        // this is for starting the drag
         function drag(ev) { ev.dataTransfer.setData("text", ev.target.id); }
+        // this is for dropping the item
         function drop(ev) {
             ev.preventDefault();
             var data = ev.dataTransfer.getData("text");
