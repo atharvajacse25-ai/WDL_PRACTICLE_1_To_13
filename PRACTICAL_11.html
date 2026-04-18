@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practical 11 - HTML5 APIs</title>
+    <style>
+        #drag-box {
+            width: 150px;
+            height: 150px;
+            border: 2px dashed black;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        #item {
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+            color: white;
+            text-align: center;
+            line-height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Practical 11: HTML5 APIs</h1>
+
+    <h3>1. Drag and Drop</h3>
+    <div id="drag-box" ondrop="drop(event)" ondragover="allowDrop(event)">
+        Drop here
+    </div>
+    <div id="item" draggable="true" ondragstart="drag(event)">Drag</div>
+
+    <h3>2. Geolocation</h3>
+    <button onclick="getLocation()">Get My Location</button>
+    <p id="location-display"></p>
+
+    <h3>3. Web Storage</h3>
+    <input type="text" id="nameInput" placeholder="Enter name">
+    <button onclick="saveName()">Save Name</button>
+    <p id="storage-display"></p>
+
+    <script>
+        // Drag and Drop
+        function allowDrop(ev) { ev.preventDefault(); }
+        function drag(ev) { ev.dataTransfer.setData("text", ev.target.id); }
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+
+        // Geolocation
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                document.getElementById("location-display").innerHTML = "Geolocation not supported.";
+            }
+        }
+        function showPosition(position) {
+            document.getElementById("location-display").innerHTML =
+                "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+        }
+
+        // Web Storage
+        function saveName() {
+            var name = document.getElementById("nameInput").value;
+            localStorage.setItem("username", name);
+            displayStorage();
+        }
+        function displayStorage() {
+            var name = localStorage.getItem("username");
+            if (name) {
+                document.getElementById("storage-display").innerHTML = "Saved name: " + name;
+            }
+        }
+        displayStorage();
+    </script>
+</body>
+
+</html>
