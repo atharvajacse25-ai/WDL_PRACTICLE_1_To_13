@@ -7,44 +7,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Practical 11 - HTML5 APIs</title>
     <style>
+        body {
+            background-color: lightcyan;
+            font-family: "Arial", sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: white;
+            border: 3px solid #000;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+            border-radius: 15px;
+        }
+
+        h1 {
+            color: darkblue;
+            text-decoration: underline;
+        }
+
+        h3 {
+            color: maroon;
+            background-color: #ffffcc;
+            display: inline-block;
+            padding: 5px;
+        }
+
         #drag-box {
-            width: 150px;
-            height: 150px;
-            border: 2px solid #333;
-            background-color: #f9f9f9;
-            padding: 10px;
-            margin-bottom: 20px;
+            width: 200px;
+            height: 100px;
+            border: 2px dashed red;
+            background-color: #f0f0f0;
+            margin: 10px auto;
+            line-height: 100px;
         }
 
         #item {
-            width: 50px;
-            height: 50px;
-            background-color: blue;
-            color: white;
+            width: 60px;
+            height: 60px;
+            background-color: green;
+            color: yellow;
+            font-weight: bold;
             text-align: center;
-            line-height: 50px;
+            line-height: 60px;
+            margin: 10px auto;
+            cursor: pointer;
+        }
+
+        button {
+            background-color: orange;
+            color: black;
+            border: 2px solid brown;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: yellow;
+        }
+
+        input {
+            padding: 10px;
+            border: 2px solid blue;
+        }
+
+        footer {
+            margin-top: 30px;
+            font-weight: bold;
+            color: blue;
         }
     </style>
 </head>
 
 <body>
-    <h1>Practical 11: HTML5 APIs</h1>
+    <div class="container">
+        <h1>Practical 11: HTML5 APIs</h1>
 
-    <h3>1. Drag and Drop</h3>
-    <div id="drag-box" ondrop="drop(event)" ondragover="allowDrop(event)">
-        Drop here
+        <h3>1. Drag and Drop</h3>
+        <div id="drag-box" ondrop="drop(event)" ondragover="allowDrop(event)">
+            Drop here
+        </div>
+        <div id="item" draggable="true" ondragstart="drag(event)">Drag</div>
+
+        <hr>
+
+        <h3>2. Geolocation</h3>
+        <p>Click the button below to see your latitude and longitude!</p>
+        <button onclick="getLocation()">Get My Location</button>
+        <p id="location-display"></p>
+
+        <hr>
+
+        <h3>3. Web Storage</h3>
+        <p>Enter name to save in browser:</p>
+        <input type="text" id="nameInput" placeholder="Type name...">
+        <br><br>
+        <button onclick="saveName()">Save My Name</button>
+        <p id="storage-display"></p>
     </div>
-    <div id="item" draggable="true" ondragstart="drag(event)">Drag</div>
-
-    <h3>2. Geolocation</h3>
-    <p>Click the button below to see your latitude and longitude!</p>
-    <button onclick="getLocation()">Get My Location</button>
-    <p id="location-display"></p>
-
-    <h3>3. Web Storage</h3>
-    <input type="text" id="nameInput" placeholder="Type your name here...">
-    <button onclick="saveName()">Save Name</button>
-    <p id="storage-display"></p>
 
     <script>
         // this function lets us drag items
